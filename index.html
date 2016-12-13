@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Angular JS- Module 1 assignment</title>
+</head>
+<body ng-app="TooMuchApp">
+    <div ng-controller="TooMuchController">
+        <h1>Assignment 1 :</h1>
+        <div>
+            List Comma seperated eatable items
+            <input type="text" ng-model="ItemsValue" ng-keyup="CallCustomFilter()"/><br />
+            <I>Note each comma matters here..</I>
+              <br />
+            <input type="button" ng-click="CheckTooMuch()" value="Check If Too Much" />
+            {{Message}}
+            <br/>
+            <br/>
+            <br/>
+            <I>Testing filters both Custom and Inbuild</I>
+            <br/>Currency Filter
+            <input type="text" ng-model="ItemsValue| currency : '$' : 4" style="width:500px" /><br />
+            <br/>UpperCase filter
+            <input type="text" ng-model="ItemsValue| uppercase" style="width:500px" /><br />
+            <br/> Reverse + LowerCase  filter
+            <input type="text" ng-model="ItemsValue| reverse : true | lowercase" style="width:500px" /><br />
+            <br/>Reverse filter from Js file
+            <input type="text" ng-model="ReverseValue" style="width:500px" /><br />
+            <br /><br />
+            <I>Understanding $digest cycle</I>
+            <input type="button" ng-click="CheckWatchers()" value="Check Watcher cycle:" />
+            {{WatcherValue}}
+            <br/>
+            <br/>
+            <br/>
+            <I>Understanding ng-repeat</I>
+            Shopping list of array
+            <br>
+            <ul>
+              <li ng-repeat = "item in shoppingList1">{{item}}</li>
+            </ul>
+            <br />Shopping list of object
+            <ul>
+              <li ng-repeat = "item in shoppingList2">{{$index + 1}}.  buy {{item.name | uppercase}} of  {{item.price | currency}}</li>
+            </ul>
+            <input type="text" ng-model="inputValue1" placeholder ="Item Name" >
+            <input type="text" ng-model="inputValue2"  placeholder="Item Price">
+            <button type="button" ng-click="AddtoList()">Add item to shopping list 2</button>
+            <br /><I>Understanding filter in ng-repeat</I>
+            Search <input type="text" ng-model="search" >
+            <ul>
+              <li ng-repeat = "item in shoppingList1 | filter : search">{{item}}</li>
+              <li ng-repeat = "item in shoppingList2 | filter : search">{{$index + 1}}.  buy {{item.name | uppercase}} of  {{item.price | currency}}</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
